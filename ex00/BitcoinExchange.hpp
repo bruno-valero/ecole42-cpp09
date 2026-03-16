@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno-valero <bruno-valero@student.42.f    +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 02:34:03 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/14 18:35:56 by bruno-valer      ###   ########.fr       */
+/*   Updated: 2026/03/16 15:49:58 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ class BitcoinExchange
 		std::list<t_record>	_db_data;
 		std::list<t_record>	_infile_data;
 
-		static const int	_btc_start_year = 2009;
-		static const int	_btc_start_month = 0;
-		static const int	_btc_start_day = 2;
+		static const int	_btc_start_year;
+		static const int	_btc_start_month;
+		static const int	_btc_start_day;
 
 		static std::list<t_record>	_readFile(const std::string &file_name, const char separator);
 		static t_record				_parseRecord(const std::string &line, const char separator);

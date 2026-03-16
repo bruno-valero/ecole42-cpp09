@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno-valero <bruno-valero@student.42.f    +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 19:56:22 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/15 00:04:31 by bruno-valer      ###   ########.fr       */
+/*   Updated: 2026/03/16 15:49:50 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ struct s_item
 class RPN
 {
 	private:
-		static const int	_max_expression_number = 9;
+		static const int	_max_expression_number;
 
 		std::stack<t_item>	_stack;
 		std::stack<t_item>	_support;

@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno-valero <bruno-valero@student.42.f    +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 16:34:08 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/14 19:00:55 by bruno-valer      ###   ########.fr       */
+/*   Updated: 2026/03/16 15:40:23 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+const int	BitcoinExchange::_btc_start_year = 2009;
+const int	BitcoinExchange::_btc_start_month = 0;
+const int	BitcoinExchange::_btc_start_day = 2;
 
 std::list<t_record>		BitcoinExchange::_readFile(const std::string &file_name, const char separator)
 {
@@ -91,7 +95,7 @@ bool					BitcoinExchange::_isValidDate(const std::string &str)
 	const bool	is_leap_year = year % 4 == 0 || (year % 100 == 0 && year % 400 == 0) || year % 100 != 0;
 
 	if (str_time.tm_mon == 1 && (str_time.tm_mday > month_max_days[1] + is_leap_year)) return (false);
-	if (str_time.tm_mday > month_max_days[str_time.tm_mon]) return (false);
+	if (str_time.tm_mon != 1 && str_time.tm_mday > month_max_days[str_time.tm_mon]) return (false);
 
 	if (year == _btc_start_year && str_time.tm_mon < _btc_start_month) return (false);
 	if (year == _btc_start_year && str_time.tm_mon == _btc_start_month && str_time.tm_mday < _btc_start_day) return (false);
@@ -110,6 +114,8 @@ t_record				BitcoinExchange::_parseRecord(const std::string &line, const char se
 	date_part = date_part.substr(0, date_part.find_last_not_of(" ") + 1);
 	std::string	number_part = line.substr(sep_idx + 1, line.length() - (sep_idx + 1));
 	start_idx = number_part.find_first_not_of(" ");
+	record.is_valid_value = start_idx != std::string::npos;
+	if (!record.is_valid_value) return (record);
 	number_part = number_part.substr(start_idx, number_part.find_last_not_of(" ") - start_idx + 1);
 
 	record.timestamp = 0;

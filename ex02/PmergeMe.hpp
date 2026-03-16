@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno-valero <bruno-valero@student.42.f    +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 10:30:17 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/15 22:48:03 by bruno-valer      ###   ########.fr       */
+/*   Updated: 2026/03/16 15:50:17 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,6 @@ public:
 	void						processContainers(const char **data, size_t size);
 	const std::vector<int>		&getVector(void) const;
 	const std::deque<int>		&getDeque(void) const;
-
-
-
-
-
 };
 
 #endif

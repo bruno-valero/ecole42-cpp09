@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno-valero <bruno-valero@student.42.f    +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 20:19:52 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/15 00:05:44 by bruno-valer      ###   ########.fr       */
+/*   Updated: 2026/03/16 15:49:46 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+const int	RPN::_max_expression_number = 9;
 
 RPN::RPN(void): _stack(), _support()
 { };
@@ -127,6 +129,8 @@ double			RPN::claculateExpression(void)
 		{
 			_support.push(item);
 			_stack.pop();
+			if (_stack.empty())
+				break ;
 			item = _stack.top();
 		}
 		if (_stack.empty()) throw std::runtime_error("Expression Error: not enough operators!");
