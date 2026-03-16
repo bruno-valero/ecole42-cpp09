@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 16:34:08 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/16 15:40:23 by brunofer         ###   ########.fr       */
+/*   Updated: 2026/03/16 15:56:18 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool					BitcoinExchange::_isValidDate(const std::string &str)
 	if (str_time.tm_mon > 11) return (false);
 
 	const int	month_max_days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	const bool	is_leap_year = year % 4 == 0 || (year % 100 == 0 && year % 400 == 0) || year % 100 != 0;
+	const bool	is_leap_year = (year % 4 == 0 && year % 100 != 0) || (year % 100 == 0 && year % 400 == 0);
 
 	if (str_time.tm_mon == 1 && (str_time.tm_mday > month_max_days[1] + is_leap_year)) return (false);
 	if (str_time.tm_mon != 1 && str_time.tm_mday > month_max_days[str_time.tm_mon]) return (false);
