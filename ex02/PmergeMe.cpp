@@ -6,7 +6,7 @@
 /*   By: bruno-valero <bruno-valero@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 11:19:02 by bruno-valer       #+#    #+#             */
-/*   Updated: 2026/03/15 23:11:06 by bruno-valer      ###   ########.fr       */
+/*   Updated: 2026/03/15 23:32:55 by bruno-valer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void						PmergeMe::_parseInput(const char **data, size_t size, void (PmergeMe::
 	{
 		size_t		number_len = 0;
 		bool	found_plus = false;
+		bool	found_digit = false;
 		for(int j = 0; data[i][j]; j++)
 		{
 			if (std::isspace(data[i][j]))
@@ -86,6 +87,8 @@ void						PmergeMe::_parseInput(const char **data, size_t size, void (PmergeMe::
 				error_message += "'.";
 				throw std::runtime_error(error_message);
 			}
+			if (found_digit && std::isspace(data[i][j - 1])) throw std::runtime_error("Input Error: more than 1 number per argument was found!");
+			found_digit = true;
 			number_len++;
 		}
 
